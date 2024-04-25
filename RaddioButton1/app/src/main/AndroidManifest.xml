@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EmptyActivity">
+            <!-- 如果需要的話，可以添加其他屬性 -->
+        </activity>
     </application>
 
 </manifest>
