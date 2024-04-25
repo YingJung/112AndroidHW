@@ -95,8 +95,8 @@
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,14 +106,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:text="張數:"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgType"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rgType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
