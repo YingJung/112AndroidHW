@@ -1,3 +1,4 @@
+//a111221035
 package com.example.raddiobutton1;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,28 +15,41 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.EditText;
 
+import com.example.raddiobutton1.EmptyActivity;
+
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
-    TextView output; // 声明TextView对象
-    RadioGroup rgGender; // 声明RadioGroup对象
-    RadioGroup rgType; // 声明RadioGroup对象
-    EditText editTextNumber; // 声明EditText对象
+    TextView output;
+    RadioGroup rgGender;
+    RadioGroup rgType;
+    EditText editTextNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 找到TextView对象并注册监听器
+
         output = findViewById(R.id.lblOutput);
         rgGender = findViewById(R.id.rgGender);
         rgType = findViewById(R.id.rgType);
         editTextNumber = findViewById(R.id.editTextNumber);
+        Button button = findViewById(R.id.button);
 
-        // 设置选择变化监听器
+
+
         rgGender.setOnCheckedChangeListener(this);
         rgType.setOnCheckedChangeListener(this);
 
-        // 设置EditText文本变化监听器
+        Intent intent = getIntent();
+        String gender = intent.getStringExtra("gender");
+        String ticketType = intent.getStringExtra("ticketType");
+        int numberOfTickets = intent.getIntExtra("numberOfTickets", 0);
+//        TextView textView = findViewById(R.id.textView);
+        String displayText = gender + " " + ticketType + " " + numberOfTickets + " 張";
+//        textView.setText(displayText);
+
+
+
         editTextNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -45,37 +59,63 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
             @Override
             public void afterTextChanged(Editable editable) {
-                // 当票数发生变化时更新文本内容
+
                 calculatePriceAndDisplay();
             }
         });
 
-        // 找到按钮并设置点击事件监听器
-        Button button = findViewById(R.id.button);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 获取 TextView 中的文本内容
-                String ticketInfo = output.getText().toString();
+                // 獲取購票資訊
+                String gender = "";
+                int genderCheckedId = rgGender.getCheckedRadioButtonId();
+                if (genderCheckedId == R.id.rdbBoy) {
+                    gender = "男";
+                } else if (genderCheckedId == R.id.rdbGirl) {
+                    gender = "女";
+                }
 
-                // 创建 Intent 并传递购票信息到下一个页面
-                Intent intent = new Intent(MainActivity.this, NextActivity.class);
-                intent.putExtra("ticketInfo", ticketInfo);
+                String ticketType = "";
+                int typeCheckedId = rgType.getCheckedRadioButtonId();
+                if (typeCheckedId == R.id.rdbAdult) {
+                    ticketType = "全票";
+                } else if (typeCheckedId == R.id.rdbChild) {
+                    ticketType = "兒童票";
+                } else if (typeCheckedId == R.id.rdbStudent) {
+                    ticketType = "學生票";
+                }
+
+                int numberOfTickets = 0;
+                try {
+                    numberOfTickets = Integer.parseInt(editTextNumber.getText().toString());
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+                // 創建 Intent 並將購票資訊帶到下一頁
+                Intent intent = new Intent(MainActivity.this, EmptyActivity.class);
+                intent.putExtra("gender", gender);
+                intent.putExtra("ticketType", ticketType);
+                intent.putExtra("numberOfTickets", numberOfTickets);
                 startActivity(intent);
             }
         });
+
+
 
     }
 
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-        // 当选择发生变化时更新文本内容
+
         calculatePriceAndDisplay();
     }
 
     private void calculatePriceAndDisplay() {
-        // 获取票数
+
         int numberOfTickets = 0;
         try {
             numberOfTickets = Integer.parseInt(editTextNumber.getText().toString());
@@ -83,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             e.printStackTrace();
         }
 
-        // 获取性别
+
         String gender = "";
         int genderCheckedId = rgGender.getCheckedRadioButtonId();
         if (genderCheckedId == R.id.rdbBoy) {
@@ -92,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             gender = "女";
         }
 
-        // 获取票类型
+
         String ticketType = "";
         int typeCheckedId = rgType.getCheckedRadioButtonId();
         int price = 0;
@@ -107,10 +147,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             price = 400;
         }
 
-        // 计算总价
+
         int totalPrice = price * numberOfTickets;
 
-        // 更新文本视图的内容
+
         String displayText = gender + " "  + ticketType + " " + numberOfTickets + " 張, 總價格: " + totalPrice;
         output.setText(displayText);
     }
