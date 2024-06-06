@@ -16,7 +16,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="183edd75-998e-4b52-90a4-90a06fd16239" name="Changes" comment="" />
+    <list default="true" id="183edd75-998e-4b52-90a4-90a06fd16239" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../RaddioButton/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RaddioButton/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +68,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/User/Downloads/112AndroidHW-main/112AndroidHW-main/RaddioButton1"
+    "last_opened_file_path": "C:/Users/User/OneDrive/文件/GitHub/112AndroidHW/RaddioButton1"
   }
 }]]></component>
   <component name="RunManager">
@@ -132,9 +135,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
